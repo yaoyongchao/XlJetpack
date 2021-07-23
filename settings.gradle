@@ -1,3 +1,5 @@
 rootProject.name = "XlJetpack"
 include ':app'
-include ':baselib'
+include ':lib_base'
+include ':yc_login'
+include ':lib_common_ui'

@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.yyc.xl"
+        applicationId "com.yyc.login"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':lib_base')
+
+implementation project(path: ':lib_base')
     implementation project(path: ':lib_common_ui')
 }

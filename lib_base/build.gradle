@@ -39,6 +39,11 @@ dependencies {
     api 'androidx.appcompat:appcompat:1.2.0'
     api 'com.google.android.material:material:1.2.1'
     api 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testApi('junit:junit:4.+')
+    androidTestApi('androidx.test.ext:junit:1.1.2')
+    androidTestApi('androidx.test.espresso:espresso-core:3.3.0')
+
+
     api 'androidx.legacy:legacy-support-v4:1.0.0'
     api 'com.google.code.gson:gson:2.8.6'
     api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
