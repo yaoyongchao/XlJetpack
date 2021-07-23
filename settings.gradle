@@ -1,2 +1,3 @@
 rootProject.name = "XlJetpack"
 include ':app'
+include ':baselib'
