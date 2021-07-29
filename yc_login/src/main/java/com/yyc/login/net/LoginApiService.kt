@@ -8,6 +8,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface LoginApiService {
-    @POST("doctor/login")
+//    @POST("doctor/login")
+    @POST("login")
     suspend fun login(@Query("phone") phone: String, @Query("captcha") captcha: String): XlBaseBean<LoginResponse>
 }

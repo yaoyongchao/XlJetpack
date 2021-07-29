@@ -36,8 +36,8 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            buildConfigField "String", "DO_MAIN", '"http://test.yaofang.xiaoliuyisheng.cn"'
-//            buildConfigField "String", "DO_MAIN", '"https://www.fastmock.site/mock/d94f8c6b97bf04c9d20760314ceffae7/test"'
+//            buildConfigField "String", "DO_MAIN", '"http://test.yaofang.xiaoliuyisheng.cn"'
+            buildConfigField "String", "DO_MAIN", '"https://www.fastmock.site/mock/d94f8c6b97bf04c9d20760314ceffae7/test"'
             buildConfigField "Boolean", "isTest", 'false'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
