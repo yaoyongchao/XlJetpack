@@ -20,15 +20,15 @@ import org.koin.android.ext.android.inject
 
 
 class LoginActivity : AppCompatActivity() {
-    val loginresp by inject<LoginRespModel>()
+//    val loginresp by inject<LoginRespModel>()
     lateinit  var dialog : AlertDialog
     lateinit var builder : AlertDialog.Builder
+    val mModel by inject<LoginViewModel>()
 
     private lateinit var binding : ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login)
-        Log.e("aabb","-----" + loginresp + "*** ")
         Log.e("aabb","----:" + API)
 
 
@@ -40,11 +40,15 @@ class LoginActivity : AppCompatActivity() {
 
         dialog = builder.create()
 
+        binding.lifecycleOwner = this
+        binding.model = mModel
+
 
         binding.btnLogin.setOnClickListener {
 //            coroutineTwo()
 //            flowOne()
-            flowTwo()
+//            flowTwo()
+            mModel.log()
         }
 
     }
@@ -114,6 +118,48 @@ class LoginActivity : AppCompatActivity() {
 
         log("aa:$aa")
 
+    }
+
+    fun flowTwo1() {
+        val aa = GlobalScope.launch {
+            API.login1("17600636720","666666")
+                .flowOn(Dispatchers.Main)
+                .onStart {
+                    log("onStart：${Thread.currentThread().name}" )
+                    // 主线程中更新UI
+                    withContext(Dispatchers.Main) {
+                        if (dialog.isShowing.not())
+                            dialog.show()
+                    }
+                }
+                .onCompletion {
+                    log("onCompletion：${Thread.currentThread().name}")
+                    // 主线程中更新UI
+                    withContext(Dispatchers.Main) {
+                        if (dialog.isShowing)
+                            dialog.dismiss()
+                    }
+                }
+                .catch {
+                    log("catch== ： ${Thread.currentThread().name}" )
+                    // 主线程中更新UI
+                    withContext(Dispatchers.Main) {
+                        if (dialog.isShowing)
+                            dialog.dismiss()
+                    }
+                }
+                .collect {
+                    log("collect:$it")
+                    it.n {  }
+                    if (it.status == 200) {
+                        log("请求成功：$it")
+                    } else {
+                        log("请求失败：$it")
+                    }
+                }
+        }
+
+        log("aa:$aa")
     }
 
     fun log(msg: String) {

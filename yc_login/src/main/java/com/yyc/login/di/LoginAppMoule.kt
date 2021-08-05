@@ -1,5 +1,6 @@
 package com.yyc.login.di
 
+import com.yyc.login.LoginViewModel
 import com.yyc.login.model.LoginRespModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -9,6 +10,7 @@ val loginAppMoudle = module {
 //    factory 每次被需要时都创建（获取）一个新的实例
     factory {
         LoginRespModel()
+        LoginViewModel()
     }
 
 //    而 single 会让 Koin 保留实例用于今后直接返回，类似于 Dagger 中 @Singleton 的作用。
