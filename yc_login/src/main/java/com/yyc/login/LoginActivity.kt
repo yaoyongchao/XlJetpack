@@ -31,6 +31,9 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login)
         Log.e("aabb","----:" + API)
 
+//        startActivity(Intent(this,FlowActivity::class.java))
+//        finish()
+
 
         builder = AlertDialog.Builder(this)
         builder.setIcon(R.mipmap.ic_launcher)
